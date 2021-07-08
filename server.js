@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -11,7 +12,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 //connect to mongodb
-mongoose.connect("mongodb+srv://lynn:lynn062504@cluster0.fqg0v.mongodb.net/newItemsDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
+const password = process.env.NOTE_DB_PW
+mongoose.connect("mongodb+srv://lynn:password@cluster0.fqg0v.mongodb.net/newItemsDB?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true})
 
 //data schema
 const itemSchema = {
